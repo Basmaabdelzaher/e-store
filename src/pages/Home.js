@@ -1,14 +1,12 @@
 import React, { useContext} from 'react';
 import { ProductsContext } from '../context/ProductsContext';
-import Product from '../components/Product';
+import Products from '../components/Products';
 
 const Home = () => {
   const {products} = useContext(ProductsContext);
   return (
     <div>
-      {products && products.map(product => {
-          return <Product key={product.id} product={product}/>
-        })}
+      {products && <Products products= { products } />}
     </div>
   )
 }

@@ -1,0 +1,13 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: pink;
+  transition: all ease-in-out 0.5s;
+  translate: 300px;
+}
+.show-sidebar {
+  translate: 0px;
+}
