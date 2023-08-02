@@ -74,3 +74,18 @@ body {
     }
   }
 }
+
+.shopping-cart {
+  &.card {
+    padding: 0;
+    border-radius: 0;
+    border: none;
+  }
+  .card-header, .card-footer {
+    background: transparent;
+    border: none;
+  }
+  .card-header {
+    border-bottom: 1px rgba(#000000, 0.06) solid; 
+  }
+}
