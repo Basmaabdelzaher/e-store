@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { IoClose, IoArrowForwardSharp } from "react-icons/io5";
 
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
+import ShoppingCartList from "./ShoppingCartList";
 const Sidebar = () => {
-  const { showSidebar, setShowSidebar } = useContext(ShoppingCartContext);
-
+  const { showSidebar, setShowSidebar, shoppingCartItems } = useContext(ShoppingCartContext);  
   return (
     <div className={`shopping-cart card sidebar ${showSidebar ? "show-sidebar" : ""}`}>
       <div className="card-header py-3">
@@ -14,7 +14,9 @@ const Sidebar = () => {
         </span>
         
       </div>
-      <div className="card-body">Body</div>
+      <div className="card-body">
+            <ShoppingCartList shoppingCartItems={shoppingCartItems}/>
+      </div>
       <div className="card-footer py-3">footer</div>
     </div>
   );
