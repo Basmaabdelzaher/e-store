@@ -1,8 +1,11 @@
 import React from "react";
 import { FaPlus, FaRegEye } from "react-icons/fa";
+import { useContext } from "react";
+import { ShoppingCartContext } from "../context/ShoppingCartContext";
 
 const Product = ({ product }) => {
   const { id, title, price, image, category } = product;
+  const { addToShoppingCart } = useContext(ShoppingCartContext);
   return (
     <div className="product col-sm-6 col-md-4 col-lg-3 my-4">
       <div className="product-img-section">
@@ -10,7 +13,12 @@ const Product = ({ product }) => {
         <div className="text-center py-5">
           <img src={image} alt="product-img" className="product-img" />
           <div className="product-btns">
-            <button className="controller controller-1">
+            <button className="controller controller-1" onClick={() => addToShoppingCart({
+              id,
+              title,
+              price, 
+              image, 
+            })}>
               <FaPlus />
             </button>
             <a className="controller controller-2 mt-1">

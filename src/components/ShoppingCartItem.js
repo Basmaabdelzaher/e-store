@@ -7,12 +7,11 @@ import { ShoppingCartContext } from "../context/ShoppingCartContext";
 const ShoppingCartItem = ({ shoppingCartItem }) => {
   const { id, title, price, image, count } = shoppingCartItem;
   const { removeFromShoppingCart, updateShoppingCartItem } = useContext(ShoppingCartContext);
-  console.log("in item")
   return (
-    <div className="row shopping-cart-item">
+    <div className="row shopping-cart-item mb-5">
       {/* photo */}
       <div className="col-2">
-        <img src={image} alt="product-image" className="img-fluid" />
+        <img src={image} alt="product" className="img-fluid" />
       </div>
 
       <div className="col-10">
@@ -24,12 +23,12 @@ const ShoppingCartItem = ({ shoppingCartItem }) => {
         </div>
         <div className="">
           <span className="count-controller">
-            <button>
-              <AiOutlinePlus size={13} onClick={() => updateShoppingCartItem(id, 1)} />
+          <button onClick={() => updateShoppingCartItem(id, -1)}>
+              <AiOutlineMinus size={13} />
             </button>
             <input type="text" value={count} onChange={(e) => updateShoppingCartItem(id, e.target.value - count)}/>
-            <button>
-              <AiOutlineMinus size={13} onClick={() => updateShoppingCartItem(id, -1)} />
+            <button onClick={() => updateShoppingCartItem(id, 1)}>
+              <AiOutlinePlus size={13} />
             </button>
           </span>
 

@@ -1,38 +1,43 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const ShoppingCartContext = createContext({});
 
 export const ShoppingCartContextProvider = ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(false);
-  const [shoppingCartItems, setShoppingCartItems] = useState([
-    {
-      id: 2,
-      title: "Mens Casual Premium Slim Fit T-Shirts ",
-      price: 522.99,
-      image:
-        "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-      count: 2,
-    },
-  ]);
+  const [shoppingCartItems, setShoppingCartItems] = useState([]);
+  const [shoppingCartItemsCount, setShoppingCartItemsCount] = useState(0);
   // const addToShoppingCart = (item) => {
   //   setShoppingCartItems([...shoppingCartItems, {
   //   }]);
   // }
+  useEffect(()=>{
+    setShoppingCartItemsCount(shoppingCartItems.reduce((acc, item) => acc + item.count , 0));
+  }, [shoppingCartItems]);
+
   const updateShoppingCartItem = (id, changeBy) => {
-    console.log(changeBy);
-
-    setShoppingCartItems(
-      shoppingCartItems.map((item) => {
-        if (item.id === id) {
-          item.count = item.count + changeBy;
-          if (item.count < 0)
-            item.count = 0
-        }
-        return item;
-      })
-    );
-
+    let index = shoppingCartItems.findIndex(item => item.id === id);
+    if(shoppingCartItems[index].count + changeBy > 0){
+      let shoppingListCopy = [...shoppingCartItems];
+      shoppingListCopy.splice(index, 1, {...shoppingCartItems[index], count: shoppingListCopy[index].count + changeBy});
+      setShoppingCartItems(shoppingListCopy);
+    }else{
+      removeFromShoppingCart(id)
+    }
   };
+
+  const addToShoppingCart = (newItem) => {
+    const index = shoppingCartItems.findIndex(item => item.id === newItem.id);
+    if(index < 0){
+      //item is new added
+      setShoppingCartItems([...shoppingCartItems, {...newItem, count: 1}]);
+    }
+    else {
+      //item already exists
+      let shoppingListCopy = [...shoppingCartItems];
+      shoppingListCopy.splice(index, 1, {...newItem, count: shoppingListCopy[index].count + 1});
+      setShoppingCartItems(shoppingListCopy);
+    }
+  }
 
   const removeFromShoppingCart = (id) => {
     setShoppingCartItems(shoppingCartItems.filter((item) => item.id !== id));
@@ -44,6 +49,8 @@ export const ShoppingCartContextProvider = ({ children }) => {
     shoppingCartItems,
     updateShoppingCartItem,
     removeFromShoppingCart,
+    addToShoppingCart,
+    shoppingCartItemsCount
   };
   return (
     <ShoppingCartContext.Provider value={value}>
