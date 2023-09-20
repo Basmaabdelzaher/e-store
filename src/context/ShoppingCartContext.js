@@ -6,12 +6,14 @@ export const ShoppingCartContextProvider = ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [shoppingCartItems, setShoppingCartItems] = useState([]);
   const [shoppingCartItemsCount, setShoppingCartItemsCount] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
   // const addToShoppingCart = (item) => {
   //   setShoppingCartItems([...shoppingCartItems, {
   //   }]);
   // }
   useEffect(()=>{
     setShoppingCartItemsCount(shoppingCartItems.reduce((acc, item) => acc + item.count , 0));
+    setTotalPrice(shoppingCartItems.reduce((acc, item) => acc + item.price * item.count , 0));
   }, [shoppingCartItems]);
 
   const updateShoppingCartItem = (id, changeBy) => {
@@ -43,6 +45,10 @@ export const ShoppingCartContextProvider = ({ children }) => {
     setShoppingCartItems(shoppingCartItems.filter((item) => item.id !== id));
   };
 
+  const emptyshoppingCart = () => {
+    setShoppingCartItems([]);
+  }
+
   const value = {
     showSidebar,
     setShowSidebar,
@@ -50,7 +56,9 @@ export const ShoppingCartContextProvider = ({ children }) => {
     updateShoppingCartItem,
     removeFromShoppingCart,
     addToShoppingCart,
-    shoppingCartItemsCount
+    shoppingCartItemsCount,
+    totalPrice,
+    emptyshoppingCart
   };
   return (
     <ShoppingCartContext.Provider value={value}>

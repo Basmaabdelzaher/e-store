@@ -1,5 +1,5 @@
 $text-color: rgba(#000000, 0.75);
-
+$primary-btn-color: red;
 // @mixin drop-shadow {
 //   box-shadow: -3px 3px 50px rgba(#000000, 0.15);
 // }
@@ -8,6 +8,9 @@ body {
   color: $text-color;
 }
 
+button {
+  border: none;
+}
 .sidebar {
   position: fixed;
   top: 0;
@@ -61,9 +64,8 @@ body {
 
 
     &.controller-1 {
-      background-color: red;
+      background-color: $primary-btn-color;
       color: #fff;
-      border: none;;
     }
     &.controller-2 {
       color: #000;
@@ -81,6 +83,9 @@ body {
     border-radius: 0;
     border: none;
   }
+  .card-body {
+    overflow-y: auto;
+  }
   .card-header, .card-footer {
     background: transparent;
     border: none;
@@ -96,15 +101,31 @@ body {
   display: inline;
   padding: 5px 7px;
   button, input {
-    border: none;
     background: transparent;
   }
   input {
     width: 15%;
     text-align: center;
+    border: none;
+
   }
 }
 
 .clickable {
   cursor: pointer;
+}
+
+.delete-btn {
+  background: $primary-btn-color;
+  height: 40px;
+  width: 40px;
+}
+.black-btn {
+  background: black;
+  color: #e4e4e4;
+}
+.gray-btn {
+  background: #ccc;
+  color: #000;
+
 }
