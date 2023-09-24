@@ -1,5 +1,5 @@
 $text-color: rgba(#000000, 0.75);
-$primary-btn-color: red;
+$primary-btn-color: #dc3545;
 // @mixin drop-shadow {
 //   box-shadow: -3px 3px 50px rgba(#000000, 0.15);
 // }
@@ -10,6 +10,14 @@ body {
 
 button {
   border: none;
+}
+
+a {
+  color: inherit;
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 .sidebar {
   position: fixed;
@@ -22,6 +30,7 @@ button {
   box-shadow: -3px 3px 50px rgba(#000000, 0.15);
   transition: all ease-in-out 0.5s;
   translate: 500px;
+  z-index: 1030;
 }
 .show-sidebar {
   translate: 0px;
@@ -114,6 +123,22 @@ button {
 .product-wrapper {
   height: 90vh;
 }
+.shoppingcart-icon {
+  position: relative;
+  .itemsCount {
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    height: 17px;
+    width: 17px;
+    background: $primary-btn-color;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+  }
+}
+
 .clickable {
   cursor: pointer;
 }
@@ -131,4 +156,14 @@ button {
   background: #ccc;
   color: #000;
 
+}
+.header {
+  transition: all ease-in-out 0.2s;
+  &.transparent-header {
+    background: transparent;
+  }
+  &.white-header {
+    background: #fff;
+    box-shadow: 1px 1px 10px #ccc;
+  }
 }

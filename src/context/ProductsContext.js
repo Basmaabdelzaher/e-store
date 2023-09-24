@@ -20,7 +20,16 @@ export const ProductsContextProvider = ({ children }) => {
     fetchProducts();
   }, []);
 
-  const value = { products };
+  const getProductById = async (id) => {
+    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const product = await res.json();
+    return product;
+  }
+
+  const value = { 
+    products,
+    // getProductById
+   };
 
   return (
     <ProductsContext.Provider value={value}>
