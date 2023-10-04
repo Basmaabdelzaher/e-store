@@ -36,7 +36,7 @@ const ShoppingCartItem = ({ shoppingCartItem }) => {
             $ {price}
           </span>
 
-          <span className="font-weight-bold pt-1 float-right">$ {parseFloat(count * price).toFixed(2)}</span>
+          <span className="font-weight-bold float-right">$ {parseFloat(count * price).toFixed(2)}</span>
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ const Header = () => {
     })
   }, []);
   return (
-    <div className={`header row px-5 py-2 align-items-baseline sticky-top ${transparentHeader? 'transparent-header' : 'white-header'}`}>
+    <div className={`header row px-5 py-2 align-items-baseline fixed-top ${transparentHeader? 'transparent-header' : 'white-header'}`}>
       <div className="col-6">
         <Link to="/">
           <TbHanger size={45} />

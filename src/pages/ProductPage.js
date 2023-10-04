@@ -22,7 +22,7 @@ const ProductPage = () => {
 
   
   return (
-    <div>
+    <div className='page-wrapper'>
       { product && <ProductDetails product={product} />}
       { !product && <p className="font-weight-bold">Trying to get product info ...  </p> }
 

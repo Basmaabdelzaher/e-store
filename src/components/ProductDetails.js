@@ -5,8 +5,7 @@ const ProductDetails = ({ product }) => {
   const { addToShoppingCart } = useContext(ShoppingCartContext);
   const { id, title, price, image, description } = product;
   return (
-    <div className="product-wrapper container-fluid">
-      <div className="row h-100 w-100 justify-content-center align-items-center">
+      <div className="row product-wrapper w-100 justify-content-center align-items-center pt-5 pt-md-0">
         <div className="col-md-9">
           <div className="row align-items-center justify-content-around">
             <div className="col-9 col-md-5 col-lg-3 text-center mb-4">
@@ -30,7 +29,6 @@ const ProductDetails = ({ product }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

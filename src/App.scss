@@ -11,6 +11,9 @@ body {
 button {
   border: none;
 }
+.page-wrapper {
+  min-height: calc(100vh - 56px);
+}
 
 a {
   color: inherit;
@@ -121,7 +124,8 @@ a {
 }
 
 .product-wrapper {
-  height: 90vh;
+  min-height: 90vh;
+  margin-bottom: 20px;
 }
 .shoppingcart-icon {
   position: relative;
@@ -165,5 +169,42 @@ a {
   &.white-header {
     background: #fff;
     box-shadow: 1px 1px 10px #ccc;
+  }
+}
+
+.hero {
+  min-height: 500px;
+  background-color: beige;
+  padding: 7%;
+  h6 {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid black;
+    color: black;
+  }
+  .hero-img {
+    width: 50%;
+    height: auto;
+  }
+  
+}
+
+.wide-dash {
+  height: 3px;
+  width: 35px;
+  background: red;
+  display: inline-block;
+  margin-bottom: 5px;
+  margin-right: 11px;
+}
+
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    width: 100%;
+    font-size: 10px ;
   }
 }
