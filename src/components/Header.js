@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <div className={`header row px-5 py-2 align-items-baseline fixed-top ${transparentHeader? 'transparent-header' : 'white-header'}`}>
       <div className="col-6">
-        <Link to="/">
+        <Link to="e-store">
           <TbHanger size={45} />
         </Link>
       </div>

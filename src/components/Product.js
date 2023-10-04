@@ -27,7 +27,7 @@ const Product = ({ product }) => {
               >
                 <FaPlus />
               </button>
-              <Link to={`product/${id}`} className="controller controller-2 mt-1">
+              <Link to={`e-store/product/${id}`} className="controller controller-2 mt-1">
                 <FaRegEye />
               </Link>
             </div>
@@ -36,7 +36,7 @@ const Product = ({ product }) => {
       {/* product info */}
       <div className="text-left text-capitalize py-3">
         <label className="text-secondary font-weight-bold ">{category}</label>
-        <Link to={`product/${id}`} ><h6 className="font-weight-bold">{title}</h6></Link>
+        <Link to={`e-store/product/${id}`} ><h6 className="font-weight-bold">{title}</h6></Link>
         <h6>$ {price}</h6>
       </div>
     </div>
